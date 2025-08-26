@@ -7,7 +7,7 @@ function showError(message) {
 // Debug script loading
 console.log('Attempting to load Three.js...');
 if (typeof THREE === 'undefined') {
-    showError('Three.js failed to load. Using CDN version from https://unpkg.com/three@0.167.0/build/three.min.js. Ensure internet connection or download locally.');
+    showError('Three.js failed to load. Using NON CDN version /three.min.js.');
     throw new Error('Three.js not loaded');
 }
 console.log('Three.js loaded successfully');
