@@ -7,12 +7,12 @@ function showError(message) {
 // Debug script loading
 console.log('Attempting to load Three.js...');
 if (typeof THREE === 'undefined') {
-    showError('Three.js failed to load. Ensure three.min.js is in the repository root. Download from https://github.com/mrdoob/three.js/raw/r167/build/three.min.js');
+    showError('Three.js failed to load. Using CDN version from https://unpkg.com/three@0.167.0/build/three.min.js. Ensure internet connection or download locally.');
     throw new Error('Three.js not loaded');
 }
 console.log('Three.js loaded successfully');
 if (typeof THREE.OrbitControls === 'undefined') {
-    showError('OrbitControls failed to load. Ensure OrbitControls.js is in the repository root. Download from https://github.com/mrdoob/three.js/raw/r167/examples/jsm/controls/OrbitControls.js');
+    showError('OrbitControls failed to load. Ensure OrbitControls.js (modified UMD version) is in the repository root.');
     throw new Error('OrbitControls not loaded');
 }
 console.log('OrbitControls loaded successfully');
@@ -45,7 +45,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-console.log('Renderer initialized:', window.innerWidth, 'x', window.innerHeight);
+console.log('Renderer initialized:', window.innerWidth, 'x', window.innerHeight');
 
 // Earth wireframe (icosahedron)
 const earthGeometry = new THREE.IcosahedronGeometry(EARTH_RADIUS, 4);
