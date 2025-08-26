@@ -12,12 +12,31 @@
     </style>
 </head>
 <body>
-     console.log('this is a test comment')
     <div id="gui"></div>
     <div id="error"></div>
-    <script src="https://unpkg.com/three@0.167.0/build/three.min.js" defer></script>
-    <script src="OrbitControls.js" defer></script>
-    <script src="dat.gui.min.js" defer></script>
-    <script src="caps.js" defer></script>
+    <script>
+        // Dynamically load scripts in sequence
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = callback;
+            script.onerror = () => console.error(`Failed to load ${src}`);
+            document.body.appendChild(script);
+        }
+
+        console.log('Starting script loading sequence...');
+        loadScript('https://unpkg.com/three@0.167.0/build/three.min.js', function () {
+            console.log('Three.js loaded, loading OrbitControls.js...');
+            loadScript('OrbitControls.js', function () {
+                console.log('OrbitControls.js loaded, loading dat.gui.min.js...');
+                loadScript('dat.gui.min.js', function () {
+                    console.log('dat.gui.min.js loaded, loading caps.js...');
+                    loadScript('caps.js', function () {
+                        console.log('All scripts loaded successfully.');
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
