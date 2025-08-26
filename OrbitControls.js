@@ -8,7 +8,20 @@ console.log('OrbitControls is the updated version');
     } else if (typeof module === 'object' && module.exports) {
         module.exports = factory(require('three'));
     } else {
-        factory(root.THREE);
+        // Check if THREE is defined, otherwise delay execution
+        if (typeof root.THREE === 'undefined') {
+            console.warn('THREE.js not loaded yet. Waiting for it...');
+            // Optional: Add a small delay or event listener, but defer should handle this
+            setTimeout(function () {
+                if (typeof root.THREE !== 'undefined') {
+                    factory(root.THREE);
+                } else {
+                    console.error('THREE.js failed to load. OrbitControls will not be available.');
+                }
+            }, 100);
+        } else {
+            factory(root.THREE);
+        }
     }
 }(this, function (THREE) {
 
@@ -854,12 +867,12 @@ console.log('OrbitControls is the updated version');
     }
 
     // Expose OrbitControls to THREE namespace
-    THREE.OrbitControls = OrbitControls;
+    if (THREE) {
+        THREE.OrbitControls = OrbitControls;
+        OrbitControls.prototype = Object.create(THREE.EventDispatcher.prototype);
+        OrbitControls.prototype.constructor = OrbitControls;
+    }
 
-    // Inherit from EventDispatcher
-    OrbitControls.prototype = Object.create(THREE.EventDispatcher.prototype);
-    OrbitControls.prototype.constructor = OrbitControls;
-
-    return THREE.OrbitControls;
+    return THREE && THREE.OrbitControls;
 
 }));
