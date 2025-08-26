@@ -22,33 +22,29 @@ caps.js: JavaScript logic.
 
 
 
-three.min.js: Three.js library.
+OrbitControls.js: Modified UMD version for 3D navigation.
 
 
 
-OrbitControls.js: OrbitControls for 3D navigation.
+dat.gui.min.js: dat.GUI for control panel (required locally).
 
 
 
-dat.gui.min.js: dat.GUI for control panel.
-
-
-
-Download Dependencies (if not present):
+Download Dependencies:
 
 
 
 
 
-three.min.js
+dat.gui.min.js: [https://github.com/dataarts/dat.gui/raw/master/build/dat.gui.min.js]
 
 
 
-OrbitControls.js
+OrbitControls.js: Download [https://unpkg.com/three@0.167.0/examples/js/controls/OrbitControls.js], modify with console.log('OrbitControls is the updated version') and convert to UMD as shown in the code.
 
 
 
-dat.gui.min.js
+three.min.js: [https://unpkg.com/three@0.167.0/build/three.min.js] (optional, use CDN in index.html)
 
 
 
@@ -116,8 +112,8 @@ Text Display: Use a local server (http://localhost:8000/index.html), not file://
 
 
 
-Three.js Error: Verify three.min.js and OrbitControls.js are in the root directory with exact names.
+Loading Errors: Ensure all local files are present and correctly converted to UMD.
 
 
 
-Check console (F12) for errors.
+Check console (F12) for errors, including the 'OrbitControls is the updated version' log.
