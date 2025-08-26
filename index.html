@@ -25,7 +25,7 @@
         }
 
         console.log('Starting script loading sequence...');
-        loadScript('https://unpkg.com/three@0.167.0/build/three.min.js', function () {
+        loadScript('three.min.js', function () {
             console.log('Three.js loaded, loading OrbitControls.js...');
             loadScript('OrbitControls.js', function () {
                 console.log('OrbitControls.js loaded, loading dat.gui.min.js...');
