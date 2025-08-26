@@ -24,6 +24,7 @@ const _endEvent = { type: 'end' };
 const _ray = new Ray();
 const _plane = new Plane();
 const TILT_LIMIT = Math.cos( 70 * MathUtils.DEG2RAD );
+console.log('OrbitControls is the updated version');
 
 class OrbitControls extends EventDispatcher {
 
